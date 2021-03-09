@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weather Map</title>
+  <link rel = "icon" href =  
+"https://ci4.googleusercontent.com/proxy/hLOAlDXKIcfYwlFCDle2ia8WvCVCEVP4ClK6nJEpSvsTcf64b7UFtaf2aG32Cyvob-gcs1U8LVfGK9qB2M3hIXwgbp7NQd-A-E1AYUiqKyAnOlLuMUalsM5yKh5e6P5x-65DhC6TDO7xY1EYBV4tdxPizJ1vM8mY=s0-d-e1-ft#https://www.freelogodesign.org/file/app/client/thumb/fc9f0b9e-3c82-42fa-a06d-093eceeedffb_200x200.png" 
+        type = "image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Weather App</h1>
+    <div class="input">
+      <input type="text" placeholder="Enter the city" class="input_text">
+      <input type="submit" value="Submit" class="submit">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <span class="pic"><img src="weather.JPG"></span>
+      <h2 class="name" id="name"></h2>
+      <p class="temp"></p>
+      <p class="desc"></p>
+      <svg class="clouds"></svg>
+    </div>
+  </div>
+<script>
+ window.fetch('https://api.openweathermap.org/data/2.5/weather?q=Inezgane&lang=ar&units=metric&appid=241f67e42359c8d39fdd7520b6e0b216')
+  .then(result=>result.json())
+  .then(data=>{
+    var nameValue = data['name'];
+    var tempValue = data['main']['temp'];
+    var descValue = data['weather'][0]['description'];
+
+    main.innerHTML = nameValue;
+      desc.innerHTML = `Description : ${descValue}`;
+      temp.innerHTML = `Temperature : ${tempValue} °C`;
+      input.value ="";
+
+  })
+</script>
+  <script src="app.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
